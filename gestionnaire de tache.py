@@ -102,14 +102,10 @@ while True:
     if commande == "help":
         print("""\n
 help                        afficher les commandes
-ajout -T titre -t texte     ajouter une tache. remplacer
-                            titre par le titre de la tache
-                            et texte par la description de
-                            la tache.
+ajout -T titre -t texte     ajouter une tache.
 supprime 2                  Pour supprimer la tache 2
 supprime 2 3 5 6            Pour supprimer les taches 2, 3, 5, 6.
-voir                        Pour voir les taches ainsi que leurs 
-                            numéros
+voir                        Pour voir les taches.
 etat 1 en suspens           Pour changer l'état de la tache 1 de
                             en cours à en suspens.
 cls                         supprime l'historique du terminal.\n""")
