@@ -2,6 +2,7 @@ import datetime
 import subprocess
 import os
 
+url = r"C:\Program Files\Gestionnaire_de_tache\tache.txt"
 try:
     os.mkdir(r"C:\Program Files\Gestionnaire_de_tache")
 except Exception as e:
@@ -10,14 +11,14 @@ except Exception as e:
     else:
         pass
 try:
-    with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "r") as folder:
+    with open(url, "r") as folder:
         tache = folder.readlines()
 except:
-    with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "w") as folder:
-        folder.write(" ")
+    with open(url, "w") as folder:
+        folder.write("")
 
 def voir_tache():
-    with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "r") as folder:
+    with open(url, "r") as folder:
         tache = folder.readlines()
     if tache == []:
         print("+-------------------------------+")
@@ -39,16 +40,16 @@ def ajout_tache(texte):
     if "-t" not in texte:
         print("Vous ne pouvez pas ajouter cette tache car elle manque d'un texte.")
         return
-    with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "r") as folder:
+    with open(url, "r") as folder:
         tache = folder.readlines()
         nombre = len(tache)
-    with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "a") as folder:
+    with open(url, "a") as folder:
         folder.write(f"{nombre+1}) {texte} heure = {heure} delais = [en cours]\n")
         print("La tache a été ajouté.")
 
 def etat_change(numero, choix="en cours"):
     numero = str(numero)+")"
-    with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "r") as folder:
+    with open(url, "r") as folder:
         tache = folder.readlines()
     for i in tache:
         if numero in i:
@@ -58,9 +59,9 @@ def etat_change(numero, choix="en cours"):
             etat = etat.strip("]\n")
             i = i.replace(etat, choix)
             tache[ind] = i
-            with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "w") as folder:
+            with open(url, "w") as folder:
                 folder.write("")
-            with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "a") as folder:
+            with open(url, "a") as folder:
                 for i in tache:
                     folder.write(i)
 
@@ -73,27 +74,27 @@ def supprime_tache(*args):
                 wox.append(wo)
     j=1
     lst= []
-    with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "r") as folder:
+    with open(url, "r") as folder:
         tache = folder.readlines()
     for i in wox:
         i = str(i)+")"
         for u in tache:
             if i in u:
                 del tache[tache.index(u)]
-                with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "w") as folder:
+                with open(url, "w") as folder:
                     folder.write("")
-                with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "a") as folder:
+                with open(url, "a") as folder:
                     for x in tache:
                         folder.write(x)
-    with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "r") as folder:
+    with open(url, "r") as folder:
         m = folder.readlines()
         for a in m:
             a = a.replace(a[0], str(j))
             j+=1
             lst.append(a)
-    with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "w") as folder:
+    with open(url, "w") as folder:
         folder.write("")
-    with open(r"C:\Program Files\Gestionnaire_de_tache\tache.txt", "a") as folder:
+    with open(url, "a") as folder:
         for x in lst:
             folder.write(x)
 
